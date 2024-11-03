@@ -5,11 +5,10 @@ function Profile() {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/profile', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}api/profile`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
