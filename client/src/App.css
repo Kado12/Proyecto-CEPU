@@ -75,3 +75,49 @@ a:hover {
   text-align: left;
   margin: 20px 0;
 }
+
+.success-message {
+  color: green;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+}
+
+.verify-email-container,
+.forgot-password-container,
+.reset-password-container,
+.change-password-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.verify-email-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.change-password-link {
+  display: inline-block;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.change-password-link:hover {
+  background-color: #218838;
+  text-decoration: none;
+}

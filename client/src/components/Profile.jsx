@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Profile() {
   const [userData, setUserData] = useState(null);
@@ -43,7 +43,12 @@ function Profile() {
         <p><strong>Email:</strong> {userData.email}</p>
         <p><strong>Fecha de registro:</strong> {new Date(userData.created_at).toLocaleDateString()}</p>
       </div>
-      <button onClick={handleLogout}>Cerrar Sesión</button>
+      <div className="profile-actions">
+        <Link to="/change-password" className="change-password-link">
+          Cambiar Contraseña
+        </Link>
+        <button onClick={handleLogout}>Cerrar Sesión</button>
+      </div>
     </div>
   );
 }

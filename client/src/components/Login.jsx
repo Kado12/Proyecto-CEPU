@@ -60,6 +60,9 @@ function Login() {
         <p>
           ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
         </p>
+        <p>
+          ¿Olvidaste tu contraseña? <Link to="/forgot-password">Recupérala aquí</Link>
+        </p>
       </form>
     </div>
   );
