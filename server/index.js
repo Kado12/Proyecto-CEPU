@@ -1,5 +1,6 @@
 // Configuración de variables de entorno
-require('dotenv').config()
+const dotenv = require('dotenv')
+dotenv.config()
 
 // Configuración del servidor y dependencias
 const express = require('express')
@@ -15,11 +16,11 @@ app.use(express.json());
 
 // Configuración de la base de datos para Railway
 const db = mysql.createConnection({
-  host: 'junction.proxy.rlwy.net',
-  user: 'root',
-  password: 'HZtKXNKaOlMCxnOytvVQBVimsDtSnXpt',
-  database: 'railway',
-  port: 15271
+  database: process.env.MYSQL_DATABASE,
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  port: process.env.MYSQL_PORT
 });
 
 // Conexión a la base de datos
