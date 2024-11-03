@@ -1,0 +1,20 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "mysql://root:OoAVZuAoLvLmDKscWEUjTNuIxWQiYMPR@mysql.railway.internal:3306/railway",
+      "driver": "MySQL",
+      "database": "railway",
+      "username": "root",
+      "name": "Railway",
+      "connectString": "mysql://root:HZtKXNKaOlMCxnOytvVQBVimsDtSnXpt@junction.proxy.rlwy.net:15271/railway"
+    }
+  ],
+  "cSpell.words": [
+    "CEPU"
+  ]
+}
