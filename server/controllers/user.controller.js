@@ -12,7 +12,7 @@ const getProfile = (req, res) => {
       if (userResults.length === 0) {
         return res.status(404).json({ error: 'Usuario no encontrado' });
       }
-
+      console.log(userResults[0])
       db.query(
         'SELECT * FROM students',
         (error, studentResults) => {

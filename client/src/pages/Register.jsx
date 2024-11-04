@@ -34,43 +34,47 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <form onSubmit={handleSubmit} className="register-form">
-        <h2>Registro</h2>
-        {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label>Nombre:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Registrarse</button>
-        <p>
-          ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
-        </p>
-      </form>
-    </div>
+    <main className='register-body'>
+      <img src="./fondo_uni.jpg" alt="Imagen de fondo" />
+
+      <div className="register-container">
+        <form onSubmit={handleSubmit} className="register-form">
+          <h2>Registro</h2>
+          {error && <div className="error-message">{error}</div>}
+          <div className="form-group">
+            <label>Nombre:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Registrarse</button>
+          <p>
+            ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
+          </p>
+        </form>
+      </div>
+    </main>
   );
 }
 

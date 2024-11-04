@@ -121,12 +121,40 @@ const login = async (req, res) => {
         });
       }
 
-      // Verificar contraseña
-      const validPassword = await bcrypt.compare(password, user.password);
-      if (!validPassword) {
-        return res.status(401).json({
-          error: 'Credenciales inválidas'
-        });
+      // Función para verificar si la contraseña está encriptada
+      const isPasswordHashed = (password) => {
+        return password && password.length === 60; // Longitud esperada para un hash de bcrypt
+      };
+
+      let validPassword;
+
+      if (isPasswordHashed(user.password)) {
+        // Si la contraseña está encriptada, usar bcrypt para comparar
+        validPassword = await bcrypt.compare(password, user.password);
+      } else {
+        // Si no está encriptada, comparar directamente
+        validPassword = password === user.password;
+
+        // Si la contraseña no coincide, devolver un error
+        if (!validPassword) {
+          return res.status(401).json({
+            error: 'Credenciales inválidas'
+          });
+        }
+
+        // Si la contraseña no está encriptada, encriptarla y actualizarla en la base de datos
+        const hashedPassword = await bcrypt.hash(password, 10); // Cambia 10 por el número de rondas deseado
+        db.query(
+          'UPDATE users SET password = ? WHERE id = ?',
+          [hashedPassword, user.id],
+          (updateError) => {
+            if (updateError) {
+              return res.status(500).json({
+                error: 'Error al actualizar la contraseña'
+              });
+            }
+          }
+        );
       }
 
       // Generar JWT

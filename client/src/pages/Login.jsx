@@ -34,39 +34,40 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h2>Iniciar Sesión</h2>
-        {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            className='custom-input'
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña:</label>
-          <input
-            className='custom-input'
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Iniciar Sesión</button>
-        <p>
-          ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
-        </p>
-        <p>
-          ¿Olvidaste tu contraseña? <Link to="/forgot-password">Recupérala aquí</Link>
-        </p>
-      </form>
-    </div>
+    <main className='login-body'>
+      <img src="./fondo_uni.jpg" alt="Imagen de fondo" />
+      <div className="login-container">
+        <form onSubmit={handleSubmit} className="login-form">
+          <h2>Iniciar Sesión</h2>
+          {error && <div className="error-message">{error}</div>}
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Iniciar Sesión</button>
+          <p>
+            ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
+          </p>
+          <p>
+            ¿Olvidaste tu contraseña? <Link to="/forgot-password">Recupérala aquí</Link>
+          </p>
+        </form>
+      </div>
+    </main>
   );
 }
 

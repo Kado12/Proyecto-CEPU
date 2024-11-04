@@ -38,27 +38,30 @@ function Profile() {
 
   if (error) return <div className="error-message">{error}</div>;
   if (!userData) return <div>Cargando...</div>;
-  console.log(studentData)
+  console.log(new Date(userData.created_at))
+  console.log(userData.created_at)
 
   return (
     <>
-      <div className="profile-container">
-        <h2>Perfil de Usuario</h2>
-        <div className="profile-info">
-          <p><strong>Email:</strong> {userData.email}</p>
-          <p><strong>Fecha de registro:</strong> {new Date(userData.created_at).toLocaleDateString()}</p>
+      <main className='profile-body'>
+        <div className="profile-container">
+          <div className="profile-info">
+            <h2>Perfil de Usuario</h2>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Fecha de registro:</strong> {new Date(userData.created_at).toLocaleDateString()}</p>
+          </div>
+          <div className="profile-actions">
+            <Link to="/change-password" className="change-password-link">
+              Cambiar Contraseña
+            </Link>
+            <button onClick={handleLogout}>Cerrar Sesión</button>
+          </div>
         </div>
-        <div className="profile-actions">
-          <Link to="/change-password" className="change-password-link">
-            Cambiar Contraseña
-          </Link>
-          <button onClick={handleLogout}>Cerrar Sesión</button>
+        <div className='profile-register'>
+          <TableStudent studentData={studentData} />
         </div>
-      </div>
-      <div>
-        <h1>Tabla de Estudiantes</h1>
-        <TableStudent studentData={studentData} />
-      </div>
+      </main>
+
     </>
   );
 }

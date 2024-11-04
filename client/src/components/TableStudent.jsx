@@ -9,7 +9,6 @@ function TableStudent(props) {
     lastname: '',
     age: '',
     code: '',
-    dni: '',
     phone: ''
   });
   const [isEditing, setIsEditing] = useState(false);
@@ -137,7 +136,6 @@ function TableStudent(props) {
       lastname: '',
       age: '',
       code: '',
-      dni: '',
       phone: ''
     });
     setSelectedStudent(null);
@@ -156,93 +154,97 @@ function TableStudent(props) {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Buscar..."
-        value={searchStudent}
-        onChange={handleSearchChange}
-      />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          placeholder="Nombre"
-        />
-        <input
-          type="text"
-          name="lastname"
-          value={formData.lastname}
-          onChange={handleInputChange}
-          placeholder="Apellido"
-        />
-        <input
-          type="text"
-          name="age"
-          value={formData.age}
-          onChange={handleInputChange}
-          placeholder="Edad"
-        />
-        <input
-          type="text"
-          name="code"
-          value={formData.code}
-          onChange={handleInputChange}
-          placeholder="Codigo"
-        />
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleInputChange}
-          placeholder="Celular"
-        />
-        <button type="submit">
-          {isEditing ? 'Actualizar' : 'Crear'}
-        </button>
-        {isEditing && (
-          <button type="button" onClick={resetForm}>
-            Cancelar
+      <div className="form-new-register">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="Nombre"
+          />
+          <input
+            type="text"
+            name="lastname"
+            value={formData.lastname}
+            onChange={handleInputChange}
+            placeholder="Apellido"
+          />
+          <input
+            type="text"
+            name="age"
+            value={formData.age}
+            onChange={handleInputChange}
+            placeholder="Edad"
+          />
+          <input
+            type="text"
+            name="code"
+            value={formData.code}
+            onChange={handleInputChange}
+            placeholder="Código"
+          />
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder="Celular"
+          />
+          <button type="submit">
+            {isEditing ? 'Actualizar' : 'Crear'}
           </button>
-        )}
-      </form>
-      <button>Agregar</button>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Edad</th>
-            <th>Código</th>
-            <th>Celular</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredStudents.map((student) => {
-            return (
-              <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.lastname}</td>
-                <td>{student.age}</td>
-                <td>{student.code}</td>
-                <td>{student.phone}</td>
-                <td>
-                  <button onClick={() => handleEdit(student)}>
-                    Editar
-                  </button>
-                  <button onClick={() => handleDelete(student.id)}>
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+          {isEditing && (
+            <button type="button" onClick={resetForm}>
+              Cancelar
+            </button>
+          )}
+        </form>
+      </div>
+      <div className="table-register">
+        <h1>Tabla de Estudiantes</h1>
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={searchStudent}
+          onChange={handleSearchChange}
+        />
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Edad</th>
+              <th>Código</th>
+              <th>Celular</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredStudents.map((student) => {
+              return (
+                <tr key={student.id}>
+                  <td>{student.id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.lastname}</td>
+                  <td>{student.age}</td>
+                  <td>{student.code}</td>
+                  <td>{student.phone}</td>
+                  <td className="table-actions">
+                    <button onClick={() => handleEdit(student)}>
+                      Editar
+                    </button>
+                    <button onClick={() => handleDelete(student.id)}>
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
