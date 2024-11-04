@@ -41,6 +41,7 @@ function Login() {
         <div className="form-group">
           <label>Email:</label>
           <input
+            className='custom-input'
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -50,6 +51,7 @@ function Login() {
         <div className="form-group">
           <label>Contraseña:</label>
           <input
+            className='custom-input'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
